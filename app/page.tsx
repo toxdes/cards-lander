@@ -5,10 +5,13 @@ import { Download, Menu, X, Code2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { QuizModal } from "@/components/quiz-modal";
 
 export default function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [os, setOS] = useState<string | undefined>(undefined);
+  const [isQuizModalOpen, setIsQuizModalOpen] = useState(false);
+
   useEffect(() => {
     const getOS = () => {
       if (typeof window === "undefined") return "unknown"; // Prevents errors in SSR
@@ -53,16 +56,10 @@ export default function LandingPage() {
               >
                 Home
               </Link>
-              <Link
-                href="#features"
-                className="text-sm text-white hover:text-white transition-colors"
-              >
-                Features
-              </Link>
 
               <Button
                 className="bg-blue-700 hover:bg-blue-800 text-white"
-                onClick={onDownload}
+                onClick={() => setIsQuizModalOpen(true)}
               >
                 <Download className="mr-2 h-4 w-4" />
                 Download Now!
@@ -93,16 +90,9 @@ export default function LandingPage() {
                   Home
                 </Link>
 
-                <Link
-                  href="#features"
-                  className="text-sm text-white hover:text-white transition-colors"
-                >
-                  Features
-                </Link>
-
                 <Button
                   className="bg-blue-700 hover:bg-blue-800 text-white w-full"
-                  onClick={onDownload}
+                  onClick={() => setIsQuizModalOpen(true)}
                 >
                   <Download className="mr-2 h-4 w-4" />
                   Download for {os}
@@ -130,23 +120,15 @@ export default function LandingPage() {
                     height="60"
                     className="inline -mt-4"
                   />
-                  Cards - Keep Your Card Details Handy
+                  Cards: Your Digital Card Case
                 </h2>
                 <p className="text-md text-white">
-                  Okay, calm down! I know it's ironic, and you should never
-                  enter sensitive information in random apps, which makes this
-                  pretty useless, and you're right.
+                  Cards is designed to streamline the management of your credit and debit card portfolio.
+                  It provides quick and easy access to your card information, making it available in just a few taps after initial setup.
                 </p>
                 <p className="text-md text-white">
-                  However, it does one thing correctly. It makes managing your
-                  credit/debit cards portfolio easier. It helps you retrieve
-                  your card information quicker, the card information is
-                  literally 2 taps away once you add the card.
-                </p>
-
-                <p className="text-md text-white">
-                  Consider a not-so-dumb Notes app, tailored for cards. Your
-                  data never leaves your device.
+                  Functioning as a specialized note-taking application for your cards,
+                  Cards ensures your data remains exclusively on your device, prioritizing your privacy.
                 </p>
                 <p className="text-xs text-red-400">
                   Caution: This app is for personal use, and assumes user knows
@@ -155,7 +137,7 @@ export default function LandingPage() {
                 <div className="flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0">
                   <Button
                     className="bg-blue-700 hover:bg-blue-800 text-white font-weight-600 uppercase w-full"
-                    onClick={onDownload}
+                    onClick={() => setIsQuizModalOpen(true)}
                     size="lg"
                   >
                     <Download className="mr-2 h-4 w-4 " />
@@ -185,137 +167,14 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
-
-        {/* Hero 1 - Quick Find */}
-        <section
-          id="features"
-          className="py-20 md:py-32 relative overflow-hidden"
-        >
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="inline-block rounded-full bg-yellow-400/10 px-4 py-1.5 text-sm font-medium text-yellow-400">
-                  Quick Access
-                </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                  Quickly find your cards, just like a virtual pocket
-                </h2>
-                <p className="text-md text-white">
-                  Access all your saved cards instantly with our intuitive
-                  interface. No more fumbling through physical cards.
-                </p>
-              </div>
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-transparent rounded-2xl blur-3xl -z-10" />
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cards-RpRJmrH1Jzq3UGe0Jnqo33GIVHgWpi.png"
-                  alt="Quick card access interface"
-                  width={600}
-                  height={400}
-                  className="rounded-2xl shadow-2xl"
-                />
-              </div>
-            </div>
-          </div>
-          global
-        </section>
-
-        {/* Hero 2 - Offline Security */}
-        <section
-          id="security"
-          className="py-20 md:py-32 relative overflow-hidden bg-black/30"
-        >
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="relative order-2 md:order-1">
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-400/20 to-transparent rounded-2xl blur-3xl -z-10" />
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cards-RpRJmrH1Jzq3UGe0Jnqo33GIVHgWpi.png"
-                  alt="Offline security features"
-                  width={600}
-                  height={400}
-                  className="rounded-2xl shadow-2xl"
-                />
-              </div>
-              <div className="space-y-6 order-1 md:order-2">
-                <div className="inline-block rounded-full bg-orange-400/10 px-4 py-1.5 text-sm font-medium text-orange-400">
-                  Offline Only
-                </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                  OFFLINE! Your cards stay with you, secure.
-                </h2>
-                <p className="text-md text-white">
-                  Your card data never leaves your device. Experience complete
-                  privacy with our offline-first approach.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Hero 3 - Easy Addition */}
-        <section className="py-20 md:py-32 relative overflow-hidden">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="inline-block rounded-full bg-teal-400/10 px-4 py-1.5 text-sm font-medium text-teal-400">
-                  Convenient
-                </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                  Quickly add a card once, save it FOREVER!
-                </h2>
-                <p className="text-md text-white">
-                  Adding new cards is a breeze. Our smart form automatically
-                  formats and validates card details as you type.
-                </p>
-              </div>
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-teal-400/20 to-transparent rounded-2xl blur-3xl -z-10" />
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cards-RpRJmrH1Jzq3UGe0Jnqo33GIVHgWpi.png"
-                  alt="Add new card interface"
-                  width={600}
-                  height={400}
-                  className="rounded-2xl shadow-2xl"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Hero 4 - Backup */}
-        <section
-          id="backup"
-          className="py-20 md:py-32 relative overflow-hidden bg-black/30"
-        >
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="relative order-2 md:order-1">
-                <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-transparent rounded-2xl blur-3xl -z-10" />
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cards-RpRJmrH1Jzq3UGe0Jnqo33GIVHgWpi.png"
-                  alt="Backup and restore interface"
-                  width={600}
-                  height={400}
-                  className="rounded-2xl shadow-2xl"
-                />
-              </div>
-              <div className="space-y-6 order-1 md:order-2">
-                <div className="inline-block rounded-full bg-green-400/10 px-4 py-1.5 text-sm font-medium text-green-400">
-                  Encrypted Backup
-                </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                  Backup your cards, and restore it wherever you like
-                </h2>
-                <p className="text-md text-white">
-                  Never lose your card data with encrypted backups. Restore your
-                  cards on any device, securely.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
+
+      {isQuizModalOpen && (
+        <QuizModal
+          onClose={() => setIsQuizModalOpen(false)}
+          onDownload={onDownload}
+        />
+      )}
 
       {/* Footer */}
       <footer className="border-t border-white/10 py-4">
