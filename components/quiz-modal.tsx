@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { X, Check } from "lucide-react";
+import { useIsMobile } from "../hooks/use-mobile";
 
 interface QuizModalProps {
   onClose: () => void;
@@ -64,6 +65,7 @@ export function QuizModal({ onClose, onDownload }: QuizModalProps) {
   });
   const [isQuizPassed, setIsQuizPassed] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
+  const isMobile = useIsMobile();
 
   const handleAnswerChange = (questionId: string, value: string) => {
     setAnswers((prev) => {
@@ -110,7 +112,7 @@ export function QuizModal({ onClose, onDownload }: QuizModalProps) {
       setShowErrorPopup(true);
       setTimeout(() => {
         setShowErrorPopup(false);
-      }, 3000);
+      }, 5000);
     }
   };
 
@@ -185,7 +187,13 @@ export function QuizModal({ onClose, onDownload }: QuizModalProps) {
                 Download
               </Button>
               {showErrorPopup && (
-                <div className="absolute bottom-full mb-2 w-max bg-red-500 text-white text-xs rounded py-1 px-2">
+                <div
+                  className={
+                    isMobile
+                      ? "fixed bottom-10 left-1/2 -translate-x-1/2 bg-red-500 text-white text-xs rounded py-2 px-4 text-center z-50"
+                      : "absolute bottom-full mb-2 w-max bg-red-500 text-white text-xs rounded py-1 px-2"
+                  }
+                >
                   You are a bum, and a potential security risk to yourself.
                 </div>
               )}
