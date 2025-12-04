@@ -6,8 +6,8 @@ import "./globals.css";
 const rubik = Rubik({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Cards: Your Digital Card Case",
-  description: "A simple app to manage your cards.",
+  title: "Cards: Your Digital Card Manager",
+  description: "A simple app to manage your cards at one place.",
 };
 
 export default function RootLayout({
@@ -17,9 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${rubik.className}`}>
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

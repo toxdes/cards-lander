@@ -121,7 +121,7 @@ export function QuizModal({ onClose, onDownload }: QuizModalProps) {
 
   return (
     <div className="fixed inset-0 bg-black/80 flex items-end md:items-center justify-center z-50">
-      <div className="bg-[#0A0C10] border-t md:border border-white/20 rounded-t-lg md:rounded-lg p-8 w-full max-w-2xl text-white relative max-h-[80vh] overflow-y-auto">
+      <div className="bg-[#010413] border-t md:border border-white/20 rounded-t-lg md:rounded-lg p-8 w-full max-w-2xl text-white relative max-h-[80vh] overflow-y-auto">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-white/50 hover:text-white"
@@ -138,9 +138,14 @@ export function QuizModal({ onClose, onDownload }: QuizModalProps) {
                   key={option.id}
                   className={`flex items-center p-4 rounded-lg border cursor-pointer transition-all ${
                     answers[currentQuestion.id]?.includes(option.id)
-                      ? "bg-blue-700 border-blue-500"
+                      ? "border-blue-500"
                       : "bg-white/5 border-white/20 hover:bg-white/10"
                   }`}
+                  style={
+                    answers[currentQuestion.id]?.includes(option.id)
+                      ? { backgroundColor: "#1236FE" }
+                      : {}
+                  }
                 >
                   <input
                     type={currentQuestion.type}
@@ -174,7 +179,10 @@ export function QuizModal({ onClose, onDownload }: QuizModalProps) {
             <Button
               onClick={() => setCurrentQuestionIndex(currentQuestionIndex + 1)}
               disabled={!isCurrentQuestionAnswered}
-              className="bg-blue-700 hover:bg-blue-800 font-weight-600 uppercase px-8"
+              style={{ backgroundColor: "#1236FE" }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#0d2ad4")}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#1236FE")}
+              className="font-weight-600 uppercase px-8"
             >
               Next
             </Button>
@@ -182,7 +190,10 @@ export function QuizModal({ onClose, onDownload }: QuizModalProps) {
             <div className="relative">
               <Button
                 onClick={handleDownloadClick}
-                className="bg-blue-700 hover:bg-blue-800 font-weight-600 uppercase px-8"
+                style={{ backgroundColor: "#1236FE" }}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#0d2ad4")}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#1236FE")}
+                className="font-weight-600 uppercase px-8"
               >
                 Download
               </Button>

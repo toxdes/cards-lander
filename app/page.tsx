@@ -37,10 +37,10 @@ export default function LandingPage() {
     window.open("https://github.com/toxdes/cards", "_blank");
   };
   return (
-    <div className="min-h-screen bg-[#0A0C10]">
+    <div className="min-h-screen bg-[#010413]">
       {/* Navigation */}
 
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0A0C10]/80 backdrop-blur-lg border-b border-white/10">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#010413]/80 backdrop-blur-lg border-b border-white/10">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center">
@@ -56,9 +56,24 @@ export default function LandingPage() {
               >
                 Home
               </Link>
+              <Link
+                href="https://cardsapp.featurebase.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-white hover:text-white transition-colors"
+              >
+                Submit Feature/Bug
+              </Link>
 
               <Button
-                className="bg-blue-700 hover:bg-blue-800 text-white"
+                style={{ backgroundColor: "#1236FE" }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = "#0d2ad4")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = "#1236FE")
+                }
+                className="text-white"
                 onClick={() => setIsQuizModalOpen(true)}
               >
                 <Download className="mr-2 h-4 w-4" />
@@ -89,9 +104,24 @@ export default function LandingPage() {
                 >
                   Home
                 </Link>
+                <Link
+                  href="https://cardsapp.featurebase.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-white hover:text-white transition-colors"
+                >
+                  Submit Feature/Bug
+                </Link>
 
                 <Button
-                  className="bg-blue-700 hover:bg-blue-800 text-white w-full"
+                  style={{ backgroundColor: "#1236FE" }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.backgroundColor = "#0d2ad4")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.backgroundColor = "#1236FE")
+                  }
+                  className="text-white w-full"
                   onClick={() => setIsQuizModalOpen(true)}
                 >
                   <Download className="mr-2 h-4 w-4" />
@@ -120,15 +150,29 @@ export default function LandingPage() {
                     height="60"
                     className="inline -mt-4"
                   />
-                  Cards: Your Digital Card Case
+                  Cards: Your Digital Card Manager
                 </h2>
-                <p className="text-md text-white">
-                  Cards is designed to streamline the management of your credit and debit card portfolio.
-                  It provides quick and easy access to your card information, making it available in just a few taps after initial setup.
+                <p className="text-md">
+                  <a
+                    href="https://cardsapp.featurebase.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline text-md hover:opacity-60 text-emerald-400 mt-4"
+                  >
+                    Submit feature / bug
+                  </a>
                 </p>
                 <p className="text-md text-white">
-                  Functioning as a specialized note-taking application for your cards,
-                  Cards ensures your data remains exclusively on your device, prioritizing your privacy.
+                  Cards is designed to streamline the management of your credit
+                  and debit card portfolio. It provides quick and easy access to
+                  your card information, making it available in just a few taps
+                  after initial setup.
+                </p>
+                <p></p>
+                <p className="text-md text-white">
+                  Functioning as a specialized note-taking application for your
+                  cards, Cards ensures your data remains exclusively on your
+                  device, prioritizing your privacy.
                 </p>
                 <p className="text-xs text-red-400">
                   Caution: This app is for personal use, and assumes user knows
@@ -136,7 +180,14 @@ export default function LandingPage() {
                 </p>
                 <div className="flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0">
                   <Button
-                    className="bg-blue-700 hover:bg-blue-800 text-white font-weight-600 uppercase w-full"
+                    style={{ backgroundColor: "#1236FE" }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.backgroundColor = "#0d2ad4")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.backgroundColor = "#1236FE")
+                    }
+                    className="text-white font-weight-600 uppercase w-full"
                     onClick={() => setIsQuizModalOpen(true)}
                     size="lg"
                   >
