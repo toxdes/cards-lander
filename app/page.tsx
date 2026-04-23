@@ -236,7 +236,7 @@ export default function LandingPage() {
               <span className="text-white font-bold text-2xl mt-1">Cards</span>
             </div>
             <p className="text-sm text-white/50">
-              © {new Date().getFullYear()} txds.me | All rights reserved.
+              © {new Date().getFullYear()} toxdes.com | All rights reserved.
             </p>
           </div>
         </div>
