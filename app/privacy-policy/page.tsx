@@ -6,7 +6,7 @@ export default function PrivacyPage() {
       <div className="container mx-auto px-4 py-16 max-w-3xl">
         <Link
           href="/"
-          className="text-sm text-blue-400 hover:text-blue-300 transition-colors mb-8 inline-block"
+          className="text-sm text-white/50 hover:text-white transition-colors mb-8 inline-block"
         >
           ← Back to Home
         </Link>
