@@ -238,6 +238,12 @@ export default function LandingPage() {
             <p className="text-sm text-white/50">
               © {new Date().getFullYear()} toxdes.com | All rights reserved.
             </p>
+            <Link
+              href="/privacy-policy"
+              className="text-sm text-white/50 hover:text-white transition-colors"
+            >
+              Privacy Policy
+            </Link>
           </div>
         </div>
       </footer>
